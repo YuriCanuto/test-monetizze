@@ -94,12 +94,6 @@ class LotteryController extends Controller
         $this->result = $result;
     }
 
-
-
-
-
-
-
     /** @return void  */
     public function generateBets()
     {
@@ -141,6 +135,7 @@ class LotteryController extends Controller
         return $array;
     }
 
+    /** @return mixed  */
     public function index()
     {
         $this->generateBets();
@@ -161,6 +156,10 @@ class LotteryController extends Controller
         return view('welcome', [ 'results' => $array ]);
     }
 
+    /**
+     * @param mixed $game
+     * @return array
+     */
     private function getBetResult($game)
     {
         $numbers = array_intersect($game, $this->getResult());
